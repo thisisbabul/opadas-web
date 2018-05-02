@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="prescription" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8f375929-f342-4ebe-a06a-bd1db72f61f7">
+	<property name="ireport.zoom" value="1.2100000000000009"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="45"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="prescriptionid" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT
+     appointment_g053231.`id` AS appointment_g053231_id,
+     appointment_g053231.`date` AS appointment_g053231_date,
+     doctor_g053231.`id` AS doctor_g053231_id,
+     doctor_g053231.`name` AS doctor_g053231_name,
+     doctor_g053231.`qualification` AS doctor_g053231_qualification,
+     doctor_g053231.`expertise` AS doctor_g053231_expertise,
+     doctor_g053231.`chamber` AS doctor_g053231_chamber,
+     doctor_g053231.`location` AS doctor_g053231_location,
+     doctor_g053231.`visitinghours` AS doctor_g053231_visitinghours,
+     doctor_g053231.`phone` AS doctor_g053231_phone,
+     doctor_g053231.`email` AS doctor_g053231_email,
+     patient_g053231.`name` AS patient_g053231_name,
+     prescription_g053231.`age` AS prescription_g053231_age,
+     prescription_g053231.`gender` AS prescription_g053231_gender,
+     prescription_g053231.`date` AS prescription_g053231_date,
+     prescription_g053231.`prescriptionid` AS prescription_g053231_prescriptionid,
+     prescription_g053231.`height` AS prescription_g053231_height,
+     prescription_g053231.`weight` AS prescription_g053231_weight,
+     prescription_g053231.`bloodgroup` AS prescription_g053231_bloodgroup,
+     prescription_g053231.`bloodpressure` AS prescription_g053231_bloodpressure,
+     prescription_g053231.`temperature` AS prescription_g053231_temperature,
+     prescription_g053231.`diseasename` AS prescription_g053231_diseasename,
+     prescription_g053231.`type` AS prescription_g053231_type,
+     prescription_g053231.`medicinename` AS prescription_g053231_medicinename,
+     prescription_g053231.`mgml` AS prescription_g053231_mgml,
+     prescription_g053231.`dos` AS prescription_g053231_dos,
+     prescription_g053231.`comments` AS prescription_g053231_comments,
+     prescription_g053231.`testname` AS prescription_g053231_testname,
+     prescription_g053231.`description` AS prescription_g053231_description,
+     prescription_g053231.`advice` AS prescription_g053231_advice,
+     prescription_g053231.`patientid` AS prescription_g053231_patientid,
+     prescription_g053231.`doctorid` AS prescription_g053231_doctorid,
+     doctor_g053231.`organization` AS doctor_g053231_organization
+FROM
+     `doctor_g053231` doctor_g053231 INNER JOIN `appointment_g053231` appointment_g053231 ON doctor_g053231.`id` = appointment_g053231.`doctorid`
+     INNER JOIN `patient_g053231` patient_g053231 ON appointment_g053231.`patientid` = patient_g053231.`id`
+     INNER JOIN `prescription_g053231` prescription_g053231 ON patient_g053231.`id` = prescription_g053231.`patientid`
+     AND doctor_g053231.`id` = prescription_g053231.`doctorid`
+where prescription_g053231.`prescriptionid`=$P{prescriptionid}]]>
+	</queryString>
+	<field name="appointment_g053231_id" class="java.lang.Integer"/>
+	<field name="appointment_g053231_date" class="java.sql.Date"/>
+	<field name="doctor_g053231_id" class="java.lang.Integer"/>
+	<field name="doctor_g053231_name" class="java.lang.String"/>
+	<field name="doctor_g053231_qualification" class="java.lang.String"/>
+	<field name="doctor_g053231_expertise" class="java.lang.String"/>
+	<field name="doctor_g053231_chamber" class="java.lang.String"/>
+	<field name="doctor_g053231_location" class="java.lang.String"/>
+	<field name="doctor_g053231_visitinghours" class="java.lang.String"/>
+	<field name="doctor_g053231_phone" class="java.lang.String"/>
+	<field name="doctor_g053231_email" class="java.lang.String"/>
+	<field name="patient_g053231_name" class="java.lang.String"/>
+	<field name="prescription_g053231_age" class="java.lang.Integer"/>
+	<field name="prescription_g053231_gender" class="java.lang.String"/>
+	<field name="prescription_g053231_date" class="java.sql.Date"/>
+	<field name="prescription_g053231_prescriptionid" class="java.lang.Integer"/>
+	<field name="prescription_g053231_height" class="java.lang.String"/>
+	<field name="prescription_g053231_weight" class="java.lang.String"/>
+	<field name="prescription_g053231_bloodgroup" class="java.lang.String"/>
+	<field name="prescription_g053231_bloodpressure" class="java.lang.String"/>
+	<field name="prescription_g053231_temperature" class="java.lang.String"/>
+	<field name="prescription_g053231_diseasename" class="java.lang.String"/>
+	<field name="prescription_g053231_type" class="java.lang.String"/>
+	<field name="prescription_g053231_medicinename" class="java.lang.String"/>
+	<field name="prescription_g053231_mgml" class="java.lang.String"/>
+	<field name="prescription_g053231_dos" class="java.lang.String"/>
+	<field name="prescription_g053231_comments" class="java.lang.String"/>
+	<field name="prescription_g053231_testname" class="java.lang.String"/>
+	<field name="prescription_g053231_description" class="java.lang.String"/>
+	<field name="prescription_g053231_advice" class="java.lang.String"/>
+	<field name="prescription_g053231_patientid" class="java.lang.Integer"/>
+	<field name="prescription_g053231_doctorid" class="java.lang.Integer"/>
+	<field name="doctor_g053231_organization" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="404" splitType="Stretch">
+			<image>
+				<reportElement uuid="bfa41f99-36fe-44d8-9be9-a04b307698c3" x="0" y="0" width="150" height="94"/>
+				<imageExpression><![CDATA["logo.png"]]></imageExpression>
+			</image>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="e9732455-a610-40ed-b035-0e5b2678985e" style="Detail" x="1" y="0" width="799" height="49"/>
+				<textElement textAlignment="Center">
+					<font size="36"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{doctor_g053231_chamber}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="5e4ae0c0-ccfe-49e8-adf5-4dc6fb97fbf9" style="Detail" x="1" y="49" width="799" height="28"/>
+				<textElement textAlignment="Center">
+					<font size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{doctor_g053231_location}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="443e81d7-0877-4c3c-aeb8-d014bc1a7338" style="Detail" x="563" y="34" width="171" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{doctor_g053231_name}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="dc960e3d-8f2e-4e6e-b1b1-fd406ca24cd1" style="Detail" x="563" y="50" width="171" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{doctor_g053231_qualification}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="4ba2dbea-ebf1-4e32-9b6d-68947e14e398" style="Detail" x="410" y="90" width="240" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{prescription_g053231_prescriptionid}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="50d746e4-e695-4a7b-97ec-c5441e6f7aa6" style="Column header" x="307" y="89" width="103" height="15" forecolor="#736343"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Prescription Id:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="443e81d7-0877-4c3c-aeb8-d014bc1a7338" style="Detail" x="561" y="84" width="267" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{doctor_g053231_organization}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="8cf50329-9bc5-4b32-9232-63aecfb6e50a" style="Detail" x="561" y="100" width="224" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{doctor_g053231_expertise}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="d95e9038-c662-4c41-abc6-94a640083da6" x="2" y="115" width="799" height="3"/>
+			</line>
+			<line>
+				<reportElement uuid="d95e9038-c662-4c41-abc6-94a640083da6" x="3" y="153" width="799" height="3"/>
+			</line>
+			<line>
+				<reportElement uuid="33cc877c-757e-4d00-9e9e-6273ad99540d" x="241" y="156" width="1" height="248"/>
+			</line>
+			<staticText>
+				<reportElement uuid="e603e8bc-ba33-4f69-974a-516fedae5742" style="Column header" x="3" y="156" width="72" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[Test Name :]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="601f7514-0312-418f-8fc6-36eef15530f1" style="Detail" x="75" y="156" width="166" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{prescription_g053231_testname}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="6ebcef4b-8dff-482c-97af-15ba7b224530" style="Column header" x="3" y="191" width="72" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[Description:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="e4e78cbc-136e-4547-93ab-5400132211a4" style="Detail" x="75" y="191" width="166" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{prescription_g053231_description}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="7cbc78f2-5352-447d-9d90-dacfe9afdf92" style="Column header" x="3" y="254" width="47" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[Advice:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="44b8f7ce-41c6-4f5e-8cfe-64f5579f757d" style="Detail" x="3" y="269" width="238" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{prescription_g053231_advice}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="30b9b44f-8a97-4f2e-b89b-a7fca008ccc5" x="250" y="160" width="100" height="31"/>
+				<textElement>
+					<font fontName="Arial" size="24"/>
+				</textElement>
+				<text><![CDATA[Rx]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d21a1ce8-0b5d-4cc5-855b-e4c78a90d127" x="250" y="200" width="100" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<text><![CDATA[Medicine:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="1163745a-1c8b-4ae9-b29f-6938128d0341" style="Detail" x="250" y="220" width="57" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{prescription_g053231_type}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="e3d32619-4b4d-4c60-902f-85e39b06026f" style="Detail" x="307" y="220" width="68" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{prescription_g053231_medicinename}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="e56c9059-d899-49a0-a481-39de3c4a954d" style="Detail" x="375" y="220" width="25" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{prescription_g053231_mgml}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="66109acd-68a6-47f2-9e8f-e7828eec49cc" style="Detail" x="250" y="239" width="57" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{prescription_g053231_dos}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="eebea3cd-26b1-4019-8837-c779b80aa1f9" style="Detail" x="313" y="239" width="162" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{prescription_g053231_comments}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="cd3ccf6a-99a1-4bc5-9a85-ee9bab659619" x="398" y="220" width="100" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[mg/ml]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="dc6160e4-4e13-4af7-97f7-8a1ad87d3071" style="Column header" x="3" y="128" width="86" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[Patient Name:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="1edb0dfe-44fd-4eef-99c4-02a5ce197084" style="Detail" x="91" y="128" width="150" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{patient_g053231_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="d9f59b72-ba10-4e6e-9b8e-52dcacad0a41" style="Column header" x="265" y="127" width="25" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[Age:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="e472872c-0171-4305-8dc5-9a2fbc82b33e" style="Detail" x="300" y="128" width="36" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{prescription_g053231_age}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="82bdc46b-c42a-471b-98d9-f35e54db2f02" style="Column header" x="361" y="128" width="25" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[Sex:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="b06d072d-3024-4092-b30b-a8d6ea3206a4" style="Detail" x="398" y="128" width="52" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{prescription_g053231_gender}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="34523c9d-d874-458e-ab90-5d297a4a2529" style="Column header" x="475" y="128" width="47" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[Date:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="dec734fa-49d4-402a-8c0d-54f4c1b1b000" style="Detail" x="522" y="128" width="99" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{prescription_g053231_date}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="7a30149e-97e8-4283-9322-9400a30d602b" style="Column header" x="636" y="128" width="89" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[Disease Name:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="d65f6364-8b77-4095-8474-8de3be55eccc" style="Detail" x="724" y="128" width="76" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{prescription_g053231_diseasename}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="49" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="83" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="77" splitType="Stretch">
+			<line>
+				<reportElement uuid="634e7a5a-8442-4c75-a004-807ab07e46fa" positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement uuid="c4added5-e1a7-4940-99ff-d1c6e5f86365" mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#D0B48E" backcolor="#F2EBDF"/>
+				<textField evaluationTime="Report">
+					<reportElement uuid="bd6754f9-a9c4-44c1-9aa4-e0fe67e2299d" style="Column header" x="783" y="1" width="40" height="20" forecolor="#736343"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="8d4ce956-1d80-4357-b1a3-6f98bd3ae351" style="Column header" x="703" y="1" width="80" height="20" forecolor="#736343"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement uuid="5e59aade-30db-4414-88de-b19a50744ee0" style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
